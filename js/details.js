@@ -23,21 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderEventDetails(lang) {
         const t = translations[lang] || translations['en'];
-        document.getElementById('event-title').textContent = t[event.titleKey] || event.titleKey;
-        document.getElementById('event-description').textContent = t[event.descKey] || event.descKey;
+        
+        document.getElementById('event-title').textContent = t[event.titleKey] || event.title;
+        document.getElementById('event-description').textContent = t[event.descKey] || event.desc;
         document.getElementById('event-image').src = event.image;
-        document.getElementById('event-image').alt = t[event.titleKey] || event.titleKey;
+        document.getElementById('event-image').alt = t[event.titleKey] || event.title;
 
         document.getElementById('event-date-display').textContent = new Date(event.date).toLocaleDateString(lang, { year:'numeric', month:'long', day:'numeric' });
-        document.getElementById('event-location-display').textContent = event.location;
-        document.getElementById('event-category-display').textContent = t[`category_${event.categoryKey}`] || event.categoryKey;
+        
+        document.getElementById('event-location-display').textContent = t[event.locationKey] || event.location;
+        
+        document.getElementById('event-category-display').textContent = t[event.categoryKey] || t[`category_${event.categoryKey}`] || event.category;
+        
         document.getElementById('event-price-display').textContent = event.price === 'Free' ? (t['card_price_free'] || 'Free') : event.price;
 
         document.getElementById('book-tickets-btn').href = event.ticketsLink;
         document.getElementById('watch-promo-btn').href = event.youtubeLink;
 
-        document.getElementById('event-about-text1').textContent = t[`${event.titleKey}_about_text1`] || t['mission_text1'];
-        document.getElementById('event-about-text2').textContent = t[`${event.titleKey}_about_text2`] || t['mission_text2'];
+        document.getElementById('event-about-text1').textContent = t[`about_${event.titleKey}_text1`] || t['mission_text1'];
+        document.getElementById('event-about-text2').textContent = t[`about_${event.titleKey}_text2`] || t['mission_text2'];
     }
 
     renderEventDetails(localStorage.getItem('lang') || 'en');
