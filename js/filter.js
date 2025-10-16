@@ -1,123 +1,107 @@
-const eventsListContainer = document.getElementById('eventsList');
-const eventItems = eventsListContainer ? eventsListContainer.querySelectorAll('.event-item') : [];
-const categorySelect = document.getElementById('eventCategory');
-let currentSearch = '';
-let currentDate = '';
-let currentCategory = categorySelect ? categorySelect.value : 'all';
+function renderEventCard(event, lang) {
+    const cardTitle = event.title[lang];
+    const cardDesc = event.description[lang];
+    const cardCategory = event.category[lang];
+    const cardLocation = event.location[lang];
+    const cardPrice = event.price[lang];
 
-const filterEvents = () => {
-    const searchText = currentSearch.toLowerCase().trim();
-    const filterDate = currentDate;
-    const filterCategory = currentCategory;
-    const lang = typeof currentLang !== 'undefined' ? currentLang : 'en'; 
-    let resultsFound = false;
-    if (eventItems.length === 0) return;
-    eventItems.forEach(item => {
-        const card = item.querySelector('.card');
-        if (!card) return;
-        const eventCategory = item.dataset.category;
-        const eventDate = item.dataset.date;
-        const getTranslatedText = (key) => {
-            const element = card.querySelector(`[data-key="${key}"]`);
-            return (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) 
-                                ? translations[lang][key] 
-                                : (element ? element.textContent : '');
-        };
-        const titleKey = card.querySelector('.card-title').getAttribute('data-key');
-        const descKey = card.querySelector('.card-text.text-muted').getAttribute('data-key');
-        const eventText = (getTranslatedText(titleKey) + ' ' + getTranslatedText(descKey)).toLowerCase();
+    const detailsLink = `event.html?id=${event.id}`;
+
+    return `
+        <div class="col-lg-4 col-md-6 mb-4 event-card" data-category="${event.rawCategory}">
+            <div class="card h-100 shadow-sm">
+                <img src="${event.image}" class="card-img-top" alt="${cardTitle}">
+                <div class="card-body d-flex flex-column">
+                    <span class="badge bg-primary mb-2 align-self-start">${cardCategory}</span>
+                    <h5 class="card-title">${cardTitle}</h5>
+                    <p class="card-text text-muted small"><i class="fas fa-calendar-alt me-2"></i>${event.date}</p>
+                    <p class="card-text text-muted small"><i class="fas fa-map-marker-alt me-2"></i>${cardLocation}</p>
+                    <p class="card-text">${cardDesc}</p>
+                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                        <h6 class="text-success mb-0">${cardPrice}</h6>
+                        <a href="${detailsLink}" class="btn btn-sm btn-outline-secondary" data-key="card_details_btn">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function loadAndFilterEvents() {
+    if (typeof events === 'undefined') {
+        console.error("events array is not loaded. Check eventData.js");
+        return;
+    }
+
+    const currentLang = localStorage.getItem('language') || 'en';
+    const eventsContainer = document.getElementById('events-container');
+    const filterInput = document.getElementById('filter-category');
+    
+    if (!eventsContainer) return;
+
+    const selectedCategory = filterInput ? filterInput.value : 'all';
+    const searchInput = document.getElementById('event-search');
+    const dateInput = document.getElementById('event-date');
+    const searchText = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const filterDate = dateInput ? dateInput.value : '';
+
+    const filteredEvents = events.filter(event => {
+        let passesCategory = (selectedCategory === 'all' || event.rawCategory === selectedCategory);
+        
         let passesSearch = true;
-        let passesDate = true;
-        let passesCategory = true;
-        if (searchText) passesSearch = eventText.includes(searchText);
-        if (filterDate) passesDate = eventDate >= filterDate;
-        if (filterCategory !== 'all') passesCategory = eventCategory === filterCategory;
-        if (passesSearch && passesDate && passesCategory) {
-            item.style.display = 'block'; 
-            resultsFound = true;
-        } else {
-            item.style.display = 'none';
+        if (searchText) {
+            const eventText = (event.title[currentLang] + ' ' + event.description[currentLang] + ' ' + event.location[currentLang]).toLowerCase();
+            passesSearch = eventText.includes(searchText);
         }
-    });
-    let noResultsMessage = document.getElementById('noResultsMessage');
-    if (!resultsFound) {
-        if (!noResultsMessage) {
-            noResultsMessage = document.createElement('div');
-            noResultsMessage.id = 'noResultsMessage';
-            noResultsMessage.className = 'alert alert-warning mt-4 p-3 mb-4 rounded-3 text-center';
-            eventsListContainer.appendChild(noResultsMessage);
-        }
-        const fallbackText = "No events found matching your criteria.";
-        const translatedText = (typeof translations !== 'undefined' && translations[lang] && translations[lang]['no_results_message']) 
-                                             ? translations[lang]['no_results_message'] 
-                                             : fallbackText; 
-        noResultsMessage.textContent = translatedText;
-        noResultsMessage.style.display = 'block';
-    } else {
-        if (noResultsMessage) noResultsMessage.style.display = 'none';
-    }
-};
 
-const applyInitialFilter = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get('category');
-    if (categoryParam && categorySelect) {
-        const options = Array.from(categorySelect.options).map(o => o.value);
-        if (options.includes(categoryParam)) {
-            categorySelect.value = categoryParam;
-            currentCategory = categoryParam;
+        let passesDate = true;
+        if (filterDate) {
+            const eventStartDate = event.date.split(' - ')[0]; 
+            passesDate = eventStartDate >= filterDate;
         }
+
+        return passesCategory && passesSearch && passesDate;
+    });
+
+    eventsContainer.innerHTML = '';
+    
+    if (filteredEvents.length === 0) {
+        eventsContainer.innerHTML = '<div class="col-12"><p class="lead text-center" data-key="events_no_results">No events found matching your criteria.</p></div>';
+    } else {
+        filteredEvents.forEach(event => {
+            eventsContainer.innerHTML += renderEventCard(event, currentLang);
+        });
     }
-    filterEvents(); 
-};
+    
+    if (typeof applyLocalization === 'function') {
+        applyLocalization();
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    const applyFiltersButton = document.getElementById('applyFilters');
-    const searchInput = document.getElementById('eventSearch');
-    const dateInput = document.getElementById('eventDate');
-    if (searchInput) searchInput.addEventListener('input', () => { currentSearch = searchInput.value; });
-    if (dateInput) dateInput.addEventListener('change', () => { currentDate = dateInput.value; });
-    if (categorySelect) categorySelect.addEventListener('change', () => { currentCategory = categorySelect.value; });
-    if (applyFiltersButton) applyFiltersButton.addEventListener('click', filterEvents);
-    document.addEventListener('languageChanged', filterEvents);
-    applyInitialFilter(); 
+    const filterInput = document.getElementById('filter-category');
+    const searchInput = document.getElementById('event-search');
+    const dateInput = document.getElementById('event-date');
+    const applyButton = document.getElementById('apply-filters-btn');
 
-    const modalElement = document.getElementById('eventModal');
-    if (modalElement) {
-        const eventModal = new bootstrap.Modal(modalElement);
-        const eventModalLabel = document.getElementById('eventModalLabel');
-        const eventModalBody = document.getElementById('eventModalBody');
+    const handleFilterChange = () => {
+        loadAndFilterEvents();
+    };
 
-        document.querySelectorAll('.view-details-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const eventId = btn.dataset.id;
-                const eventCard = document.querySelector(`.event-item .view-details-btn[data-id="${eventId}"]`)?.closest('.event-item');
-                if (!eventCard) return;
-                const title = eventCard.querySelector('.card-title')?.textContent || '';
-                const desc = eventCard.querySelector('.card-text.text-muted')?.textContent || '';
-                const date = eventCard.querySelector('.event-date-display')?.textContent || '';
-                const location = eventCard.querySelector('.text-primary')?.textContent || '';
-                eventModalLabel.textContent = title;
-                eventModalBody.innerHTML = `<p>${desc}</p><p><strong>Date:</strong> ${date}</p><p><strong>Location:</strong> ${location}</p>`;
-                eventModal.show();
-            });
-        });
+    if (filterInput) filterInput.addEventListener('change', handleFilterChange);
+    if (searchInput) searchInput.addEventListener('input', handleFilterChange);
+    if (dateInput) dateInput.addEventListener('change', handleFilterChange);
+    
+    if (applyButton) applyButton.addEventListener('click', (e) => { e.preventDefault(); handleFilterChange(); });
 
-        document.querySelectorAll('.more-details-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const eventId = btn.dataset.id;
-                const eventCard = document.querySelector(`.event-item .view-details-btn[data-id="${eventId}"]`)?.closest('.event-item');
-                if (!eventCard) return;
-                const title = eventCard.querySelector('.card-title')?.textContent || '';
-                const desc = eventCard.querySelector('.card-text.text-muted')?.textContent || '';
-                const date = eventCard.querySelector('.event-date-display')?.textContent || '';
-                const location = eventCard.querySelector('.text-primary')?.textContent || '';
-                eventModalLabel.textContent = title;
-                eventModalBody.innerHTML = `<p>${desc}</p><p><strong>Date:</strong> ${date}</p><p><strong>Location:</strong> ${location}</p>`;
-                eventModal.show();
-            });
-        });
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam && filterInput) {
+        const options = Array.from(filterInput.options).map(o => o.value);
+        if (options.includes(categoryParam)) {
+            filterInput.value = categoryParam;
+        }
     }
+    
+    document.addEventListener('languageChanged', loadAndFilterEvents);
 });
