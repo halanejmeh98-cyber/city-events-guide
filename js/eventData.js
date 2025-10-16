@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2025-10-20",
             location: "City Park",
             price: "Free",
-            image: "images/event-music-concert.jpg", // تم التصحيح ليطابق اسم الملف الفعلي
+            image: "images/event-music-concert.jpg", 
             ticketsLink: "https://tickets.com/event1",
             youtubeLink: "https://youtube.com/event1"
         },
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2025-11-05",
             location: "Exhibition Center",
             price: "$10",
-            image: "images/food-fair.jpg", // تم التصحيح ليطابق اسم الملف الفعلي
+            image: "images/food-fair.jpg", 
             ticketsLink: "https://tickets.com/event2",
             youtubeLink: "https://youtube.com/event2"
         },
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2025-11-25",
             location: "City Museum",
             price: "$5",
-            image: "images/art-exhibit.jpg", // تم التصحيح ليطابق اسم الملف الفعلي
+            image: "images/art-exhibit.jpg",
             ticketsLink: "https://tickets.com/event3",
             youtubeLink: "https://youtube.com/event3"
         },
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2025-12-05",
             location: "Main Stadium",
             price: "$20",
-            image: "images/marathon.jpg", // تم التصحيح ليطابق اسم الملف الفعلي
+            image: "images/marathon.jpg", 
             ticketsLink: "https://tickets.com/event4",
             youtubeLink: "https://youtube.com/event4"
         },
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "2025-12-20",
             location: "City Park Pavilion",
             price: "Free",
-            image: "images/family_day.jpg", // تم التصحيح ليطابق اسم الملف الفعلي
+            image: "images/family_day.jpg", 
             ticketsLink: "https://tickets.com/event5",
             youtubeLink: "https://youtube.com/event5"
         }
@@ -86,3 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
