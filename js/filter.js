@@ -49,8 +49,8 @@ const filterEvents = () => {
         }
         const fallbackText = "No events found matching your criteria.";
         const translatedText = (typeof translations !== 'undefined' && translations[lang] && translations[lang]['no_results_message']) 
-                                    ? translations[lang]['no_results_message'] 
-                                    : fallbackText; 
+                                     ? translations[lang]['no_results_message'] 
+                                     : fallbackText; 
         noResultsMessage.textContent = translatedText;
         noResultsMessage.style.display = 'block';
     } else {
