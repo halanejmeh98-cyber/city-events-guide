@@ -1,88 +1,77 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const events = [
-        {
-            id: 1,
-            title: "City Summer Fest 🎵",
-            desc: "A three-day music festival featuring local bands.",
-            category: "music",
-            date: "2025-10-20",
-            location: "City Park",
-            price: "Free",
-            image: "images/event-music-concert.jpg", 
-            ticketsLink: "https://tickets.com/event1",
-            youtubeLink: "https://youtube.com/event1"
-        },
-        {
-            id: 2,
-            title: "International Food Fair 🌮",
-            desc: "Taste dishes from around the world in one location.",
-            category: "food",
-            date: "2025-11-05",
-            location: "Exhibition Center",
-            price: "$10",
-            image: "images/food-fair.jpg", 
-            ticketsLink: "https://tickets.com/event2",
-            youtubeLink: "https://youtube.com/event2"
-        },
-        {
-            id: 3,
-            title: "Modern Art Exhibition 🎨",
-            desc: "Showcasing works from 20 emerging artists.",
-            category: "arts",
-            date: "2025-11-25",
-            location: "City Museum",
-            price: "$5",
-            image: "images/art-exhibit.jpg",
-            ticketsLink: "https://tickets.com/event3",
-            youtubeLink: "https://youtube.com/event3"
-        },
-        {
-            id: 4,
-            title: "Annual City Marathon 🏃",
-            desc: "Join the race for health and charity.",
-            category: "sports",
-            date: "2025-12-05",
-            location: "Main Stadium",
-            price: "$20",
-            image: "images/marathon.jpg", 
-            ticketsLink: "https://tickets.com/event4",
-            youtubeLink: "https://youtube.com/event4"
-        },
-        {
-            id: 5,
-            title: "Community Fun Day 👨‍👩‍👧",
-            desc: "Games, food stalls, and entertainment for all ages.",
-            category: "family",
-            date: "2025-12-20",
-            location: "City Park Pavilion",
-            price: "Free",
-            image: "images/family_day.jpg", 
-            ticketsLink: "https://tickets.com/event5",
-            youtubeLink: "https://youtube.com/event5"
-        }
-    ];
-
-    document.querySelectorAll('.more-details-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.preventDefault();
-            const eventId = parseInt(btn.dataset.id);
-            const event = events.find(ev => ev.id === eventId);
-            if (!event) return;
-
-            const eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
-            document.getElementById('eventModalLabel').textContent = event.title;
-            document.getElementById('eventModalBody').innerHTML = `
-                <img src="${event.image}" class="img-fluid mb-3" alt="${event.title}">
-                <p>${event.desc}</p>
-                <p><strong>Date:</strong> ${event.date}</p>
-                <p><strong>Location:</strong> ${event.location}</p>
-                <p><strong>Price:</strong> ${event.price}</p>
-                <p>
-                    <a href="${event.ticketsLink}" target="_blank" class="btn btn-warning me-2">Buy Tickets</a>
-                    <a href="${event.youtubeLink}" target="_blank" class="btn btn-danger">Watch on YouTube</a>
-                </p>
-            `;
-            eventModal.show();
-        });
-    });
-});
+const events = [
+    {
+        id: 1,
+        title: { en: "City Summer Fest 🎵", ar: "مهرجان صيف المدينة 🎵" },
+        description: { en: "A three-day music festival featuring local bands.", ar: "مهرجان موسيقي لمدة ثلاثة أيام يضم فرقاً محلية." },
+        category: { en: "Music", ar: "موسيقى" },
+        rawCategory: "music", // مفتاح داخلي للفلترة
+        date: "2025-10-20 - 2025-10-22",
+        location: { en: "City Park", ar: "حديقة المدينة" },
+        price: { en: "Free", ar: "مجاني" },
+        image: "images/event-music-concert.jpg",
+        ticketsLink: "https://tickets.com/event1",
+        promoLink: "https://youtube.com/event1",
+        aboutText1: { en: "This is the first paragraph about the City Summer Fest, focusing on its history and impact on the local community.", ar: "هذه هي الفقرة الأولى عن مهرجان صيف المدينة، وتفاصيل حول تاريخه وأثره على المجتمع المحلي." },
+        aboutText2: { en: "The festival aims to promote emerging local talents and provide a family-friendly atmosphere.", ar: "يهدف المهرجان إلى تعزيز المواهب المحلية الناشئة وتوفير أجواء مناسبة للعائلة." }
+    },
+    {
+        id: 2,
+        title: { en: "International Food Fair 🌮", ar: "معرض الطعام الدولي 🌮" },
+        description: { en: "Taste dishes from around the world in one location.", ar: "تذوق أطباق من جميع أنحاء العالم في مكان واحد." },
+        category: { en: "Food", ar: "طعام" },
+        rawCategory: "food",
+        date: "2025-11-05",
+        location: { en: "Exhibition Center", ar: "مركز المعارض" },
+        price: { en: "$10", ar: "10 دولارات" },
+        image: "images/food-fair.jpg",
+        ticketsLink: "https://tickets.com/event2",
+        promoLink: "https://youtube.com/event2",
+        aboutText1: { en: "Experience culinary delights from over 30 different countries and cultures.", ar: "استمتع بتجارب طعام من أكثر من 30 دولة وثقافة مختلفة." },
+        aboutText2: { en: "Chefs will conduct live cooking demonstrations throughout the event.", ar: "سيجري الطهاة عروض طهي حية على مدار الحدث." }
+    },
+    {
+        id: 3,
+        title: { en: "Modern Art Exhibition 🎨", ar: "معرض الفن الحديث 🎨" },
+        description: { en: "Showcasing works from 20 emerging artists.", ar: "عرض أعمال فنية من 20 فناناً ناشئاً." },
+        category: { en: "Arts", ar: "فنون" },
+        rawCategory: "arts",
+        date: "2025-11-25",
+        location: { en: "City Museum", ar: "متحف المدينة" },
+        price: { en: "$5", ar: "5 دولارات" },
+        image: "images/art-exhibit.jpg",
+        ticketsLink: "https://tickets.com/event3",
+        promoLink: "https://youtube.com/event3",
+        aboutText1: { en: "The exhibition focuses on contemporary themes using diverse media and installations.", ar: "يركز المعرض على الموضوعات المعاصرة باستخدام وسائط وتركيبات متنوعة." },
+        aboutText2: { en: "Guided tours are available every hour in English and Arabic.", ar: "تتوفر جولات إرشادية كل ساعة باللغتين الإنجليزية والعربية." }
+    },
+    {
+        id: 4,
+        title: { en: "Annual City Marathon 🏃", ar: "ماراثون المدينة السنوي 🏃" },
+        description: { en: "Join the race for health and charity.", ar: "شارك في السباق من أجل الصحة والعمل الخيري." },
+        category: { en: "Sports", ar: "رياضة" },
+        rawCategory: "sports",
+        date: "2025-12-05",
+        location: { en: "Main Stadium", ar: "الملعب الرئيسي" },
+        price: { en: "$20", ar: "20 دولاراً" },
+        image: "images/marathon.jpg",
+        ticketsLink: "https://tickets.com/event4",
+        promoLink: "https://youtube.com/event4",
+        aboutText1: { en: "All proceeds from registration go directly to local children's charities.", ar: "تذهب جميع عائدات التسجيل مباشرة إلى الجمعيات الخيرية المحلية للأطفال." },
+        aboutText2: { en: "The route covers the city's scenic landmarks, starting and ending at the stadium.", ar: "يمر المسار بالمعالم السياحية للمدينة، بدءاً وانتهاءً بالملعب." }
+    },
+    {
+        id: 5,
+        title: { en: "Community Fun Day 👨‍👩‍👧", ar: "يوم المرح المجتمعي 👨‍👩‍👧" },
+        description: { en: "Games, food stalls, and entertainment for all ages.", ar: "ألعاب وأكشاك طعام وترفيه لجميع الأعمار." },
+        category: { en: "Family", ar: "عائلي" },
+        rawCategory: "family",
+        date: "2025-12-20",
+        location: { en: "City Park Pavilion", ar: "جناح حديقة المدينة" },
+        price: { en: "Free", ar: "مجاني" },
+        image: "images/family_day.jpg",
+        ticketsLink: "https://tickets.com/event5",
+        promoLink: "https://youtube.com/event5",
+        aboutText1: { en: "A free event organized by the City Council to strengthen community bonds.", ar: "حدث مجاني ينظمه مجلس المدينة لتعزيز الروابط المجتمعية." },
+        aboutText2: { en: "Featuring bouncy castles, face painting, and live acoustic music.", ar: "يضم قلاعاً قابلة للنفخ، ورسم على الوجه، وموسيقى أكوستيك حية." }
+    }
+];
