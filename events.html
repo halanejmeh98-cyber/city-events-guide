@@ -1,259 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title data-key="events_page_html_title">City Events Guide - All Events</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/city-events-guide/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-key="events_page_html_title">City Events Guide - All Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/city-events-guide/css/style.css">
 </head>
 
 <body class="container-fluid p-0">
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="/city-events-guide/index.html">
-                    <img src="/city-events-guide/images/cityevents-logo.png" alt="City Events Guide Logo" height="100" class="d-inline-block align-text-top me-2">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/index.html" data-key="nav_home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/city-events-guide/events.html" data-key="nav_events">Events</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/about.html" data-key="nav_about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/contact.html" data-key="nav_contact">Contact</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="lang-switcher">EN/AR</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/city-events-guide/index.html">
+                    <img src="/city-events-guide/images/cityevents-logo.png" alt="City Events Guide Logo" height="100" class="d-inline-block align-text-top me-2">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/index.html" data-key="nav_home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/city-events-guide/events.html" data-key="nav_events">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/about.html" data-key="nav_about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/city-events-guide/contact.html" data-key="nav_contact">Contact</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="lang-switcher">EN/AR</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <main>
-        <div class="container my-5 py-3">
-            <h1 class="display-3 text-primary mb-5" data-key="events_page_title">All City Events</h1>
-            
-            <div class="row g-4">
-                
-                <div class="col-lg-3">
-                    <div class="card p-3 sticky-top" style="top: 20px;">
-                        <h5 class="card-title mb-3" data-key="filter_category_title">Filter by Category</h5>
-                        <div class="mb-3">
-                            <label for="eventCategory" class="form-label" data-key="filter_category_title">Filter by Category:</label>
-                            <select class="form-select" id="eventCategory">
-                                <option value="all" data-key="category_all">All Categories</option>
-                                <option value="music" data-key="category_music">Music</option>
-                                <option value="culture" data-key="category_arts">Arts & Culture</option>
-                                <option value="food" data-key="category_food">Food & Drink</option>
-                                <option value="sports" data-key="category_sports">Sport</option>
-                                <option value="family" data-key="filter_family">Family</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="eventDate" class="form-label" data-key="filter_date_title">Filter by Date:</label>
-                            <input type="date" class="form-control" id="eventDate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="eventSearch" class="form-label" data-key="filter_search_label">Search:</label>
-                            <input type="text" class="form-control" id="eventSearch" data-key="search_placeholder" placeholder="Search by Event Name or Location...">
-                        </div>
-                        </div>
-                </div>
+    <main>
+        <div class="container my-5 py-3">
+            <h1 class="display-3 text-primary mb-5" data-key="events_page_title">All City Events</h1>
+            
+            <div class="row g-4">
+                
+                <div class="col-lg-3">
+                    <div class="card p-3 sticky-top" style="top: 20px;">
+                        <h5 class="card-title mb-3" data-key="filter_category_title">Filter by Category</h5>
+                        <div class="mb-3">
+                            <label for="eventCategory" class="form-label" data-key="filter_category_title">Filter by Category:</label>
+                            <select class="form-select" id="eventCategory">
+                                <option value="all" data-key="category_all">All Categories</option>
+                                <option value="music" data-key="category_music">Music</option>
+                                <option value="culture" data-key="category_arts">Arts & Culture</option>
+                                <option value="food" data-key="category_food">Food & Drink</option>
+                                <option value="sports" data-key="category_sports">Sport</option>
+                                <option value="family" data-key="filter_family">Family</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label" data-key="filter_date_title">Filter by Date:</label>
+                            <input type="date" class="form-control" id="eventDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventSearch" class="form-label" data-key="filter_search_label">Search:</label>
+                            <input type="text" class="form-control" id="eventSearch" data-key="search_placeholder" placeholder="Search by Event Name or Location...">
+                        </div>
+                        </div>
+                </div>
 
-                <div class="col-lg-9">
-                    <div class="row" id="eventsList">
-                        
-                        <div class="col-12 event-item mb-4" data-category="music" data-date="2025-07-20">
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/city-events-guide/images/music-fest.jpg" class="img-fluid rounded-start h-100" alt="Music Festival crowd" style="object-fit: cover;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title" data-key="event1_title">City Summer Fest</h5>
-                                            <p class="card-text text-muted" data-key="event1_desc">A three-day music festival featuring local bands.</p>
-                                            
-                                            <div class="card-text">
-                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-07-20">
-                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
-                                                    <small class="text-danger event-date-display">July 20, 2025</small>
-                                                </div>
-                                                <div class="d-flex justify-content-start align-items-center mb-1">
-                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
-                                                    <small class="text-primary">Central Park Arena</small>
-                                                </div>
-                                            </div>
-                                            <a href="/city-events-guide/event.html?id=1" class="btn btn-sm btn-outline-primary view-details-btn" data-id="1">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-9">
+                    <div class="row" id="eventsList">
+                        
+                        <div class="col-12 event-item mb-4" data-category="music" data-date="2025-07-20">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/city-events-guide/images/music-fest.jpg" class="img-fluid rounded-start h-100" alt="Music Festival crowd" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" data-key="event1_title">City Summer Fest</h5>
+                                            <p class="card-text text-muted" data-key="event1_desc">A three-day music festival featuring local bands.</p>
+                                            
+                                            <div class="card-text">
+                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-07-20">
+                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
+                                                    <small class="text-danger event-date-display">July 20, 2025</small>
+                                                </div>
+                                                <div class="d-flex justify-content-start align-items-center mb-1">
+                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
+                                                    <small class="text-primary">Central Park Arena</small>
+                                                </div>
+                                            </div>
+                                            <a href="/city-events-guide/event.html?id=1" class="btn btn-sm btn-outline-primary view-details-btn" data-id="1">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-12 event-item mb-4" data-category="food" data-date="2025-08-05">
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/city-events-guide/images/food-fair.jpg" class="img-fluid rounded-start h-100" alt="People enjoying food at a fair" style="object-fit: cover;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title" data-key="upcoming_event_1_title">Global Food Fair</h5>
-                                            <p class="card-text text-muted" data-key="upcoming_event_1_desc">Taste diverse cuisines from around the world.</p>
-                                            
-                                            <div class="card-text">
-                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-08-05">
-                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
-                                                    <small class="text-danger event-date-display">August 5, 2025</small>
-                                                </div>
-                                                <div class="d-flex justify-content-start align-items-center mb-1">
-                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
-                                                    <small class="text-primary">Downtown Expo Center</small>
-                                                </div>
-                                            </div>
-                                            <a href="/city-events-guide/event.html?id=2" class="btn btn-sm btn-outline-primary view-details-btn" data-id="2">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12 event-item mb-4" data-category="culture" data-date="2025-09-15">
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/city-events-guide/images/art-exhibit.jpg" class="img-fluid rounded-start h-100" alt="Modern art exhibit" style="object-fit: cover;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title" data-key="upcoming_event_3_title">Modern Art Exhibition</h5>
-                                            <p class="card-text text-muted" data-key="upcoming_event_3_desc">Showcasing works from 20 emerging artists.</p>
-                                            
-                                            <div class="card-text">
-                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-09-15">
-                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
-                                                    <small class="text-danger event-date-display">September 15, 2025</small>
-                                                </div>
-                                                <div class="d-flex justify-content-start align-items-center mb-1">
-                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
-                                                    <small class="text-primary">City Museum of Arts</small>
-                                                </div>
-                                            </div>
-                                            <a href="/city-events-guide/event.html?id=3" class="btn btn-sm btn-outline-primary view-details-btn" data-id="3">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12 event-item mb-4" data-category="sports" data-date="2025-10-01">
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/city-events-guide/images/marathon.jpg" class="img-fluid rounded-start h-100" alt="Runners in a city marathon" style="object-fit: cover;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title" data-key="upcoming_event_2_title">Annual City Marathon</h5>
-                                            <p class="card-text text-muted" data-key="upcoming_event_2_desc">Join the race for health and charity.</p>
-                                            
-                                            <div class="card-text">
-                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-10-01">
-                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
-                                                    <small class="text-danger event-date-display">October 1, 2025</small>
-                                                </div>
-                                                <div class="d-flex justify-content-start align-items-center mb-1">
-                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
-                                                    <small class="text-primary">City Harbor Route</small>
-                                                </div>
-                                            </div>
-                                            <a href="/city-events-guide/event.html?id=4" class="btn btn-sm btn-outline-primary view-details-btn" data-id="4">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-12 event-item mb-4" data-category="food" data-date="2025-08-05">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/city-events-guide/images/food-fair.jpg" class="img-fluid rounded-start h-100" alt="People enjoying food at a fair" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" data-key="upcoming_event_1_title">Global Food Fair</h5>
+                                            <p class="card-text text-muted" data-key="upcoming_event_1_desc">Taste diverse cuisines from around the world.</p>
+                                            
+                                            <div class="card-text">
+                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-08-05">
+                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
+                                                    <small class="text-danger event-date-display">August 5, 2025</small>
+                                                </div>
+                                                <div class="d-flex justify-content-start align-items-center mb-1">
+                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
+                                                    <small class="text-primary">Downtown Expo Center</small>
+                                                </div>
+                                            </div>
+                                            <a href="/city-events-guide/event.html?id=2" class="btn btn-sm btn-outline-primary view-details-btn" data-id="2">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 event-item mb-4" data-category="culture" data-date="2025-09-15">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/city-events-guide/images/art-exhibit.jpg" class="img-fluid rounded-start h-100" alt="Modern art exhibit" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" data-key="upcoming_event_3_title">Modern Art Exhibition</h5>
+                                            <p class="card-text text-muted" data-key="upcoming_event_3_desc">Showcasing works from 20 emerging artists.</p>
+                                            
+                                            <div class="card-text">
+                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-09-15">
+                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
+                                                    <small class="text-danger event-date-display">September 15, 2025</small>
+                                                </div>
+                                                <div class="d-flex justify-content-start align-items-center mb-1">
+                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
+                                                    <small class="text-primary">City Museum of Arts</small>
+                                                </div>
+                                            </div>
+                                            <a href="/city-events-guide/event.html?id=3" class="btn btn-sm btn-outline-primary view-details-btn" data-id="3">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 event-item mb-4" data-category="sports" data-date="2025-10-01">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/city-events-guide/images/marathon.jpg" class="img-fluid rounded-start h-100" alt="Runners in a city marathon" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" data-key="upcoming_event_2_title">Annual City Marathon</h5>
+                                            <p class="card-text text-muted" data-key="upcoming_event_2_desc">Join the race for health and charity.</p>
+                                            
+                                            <div class="card-text">
+                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-10-01">
+                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
+                                                    <small class="text-danger event-date-display">October 1, 2025</small>
+                                                </div>
+                                                <div class="d-flex justify-content-start align-items-center mb-1">
+                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
+                                                    <small class="text-primary">City Harbor Route</small>
+                                                </div>
+                                            </div>
+                                            <a href="/city-events-guide/event.html?id=4" class="btn btn-sm btn-outline-primary view-details-btn" data-id="4">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="col-12 event-item mb-4" data-category="family" data-date="2025-11-10">
-                            <div class="card">
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="/city-events-guide/images/family_day.jpg" class="img-fluid rounded-start h-100" alt="Family playing together" style="object-fit: cover;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title" data-key="event5_title">Community Fun Day</h5>
-                                            <p class="card-text text-muted" data-key="event5_desc">Games, food stalls, and entertainment for all ages.</p>
-                                            
-                                            <div class="card-text">
-                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-11-10">
-                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
-                                                    <small class="text-danger event-date-display">November 10, 2025</small>
-                                                </div>
-                                                <div class="d-flex justify-content-start align-items-center mb-1">
-                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
-                                                    <small class="text-primary">City Park Pavilion</small>
-                                                </div>
-                                            </div>
-                                            <a href="/city-events-guide/event.html?id=5" class="btn btn-sm btn-outline-primary view-details-btn" data-id="5">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-12 event-item mb-4" data-category="family" data-date="2025-11-10">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="/city-events-guide/images/family_day.jpg" class="img-fluid rounded-start h-100" alt="Family playing together" style="object-fit: cover;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" data-key="event5_title">Community Fun Day</h5>
+                                            <p class="card-text text-muted" data-key="event5_desc">Games, food stalls, and entertainment for all ages.</p>
+                                            
+                                            <div class="card-text">
+                                                <div class="d-flex justify-content-start align-items-center mb-1 event-date-row" data-date-iso="2025-11-10">
+                                                    <small class="text-danger me-1" data-key="card_date">🗓️ Date:</small>
+                                                    <small class="text-danger event-date-display">November 10, 2025</small>
+                                                </div>
+                                                <div class="d-flex justify-content-start align-items-center mb-1">
+                                                    <small class="text-primary me-1" data-key="card_location">📍 Location:</small>
+                                                    <small class="text-primary">City Park Pavilion</small>
+                                                </div>
+                                            </div>
+                                            <a href="/city-events-guide/event.html?id=5" class="btn btn-sm btn-outline-primary view-details-btn" data-id="5">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <div class="container">
-             <p class="mb-1" data-key="footer_rights">&copy; 2025 City Events Guide. All rights reserved.</p>
-        
-             <p class="mb-1">
-                 <span data-key="footer_contact_text">Contact us:</span>
-                 <a href="mailto:info@cityevents.com" class="text-info">info@cityevents.com</a>
-             </p>
-        
-             <p>
-                 <span data-key="footer_follow_text">Follow us:</span>
-                 <a href="#" class="text-info me-2">Facebook</a>|
-                 <a href="#" class="text-info me-2">Twitter</a>|
-                 <a href="#" class="text-info">Instagram</a>
-             </p>
-        </div>
-    </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-        crossorigin="anonymous"></script>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+             <p class="mb-1" data-key="footer_rights">&copy; 2025 City Events Guide. All rights reserved.</p>
+        
+             <p class="mb-1">
+                 <span data-key="footer_contact_text">Contact us:</span>
+                 <a href="mailto:info@cityevents.com" class="text-info">info@cityevents.com</a>
+             </p>
+        
+             <p>
+                 <span data-key="footer_follow_text">Follow us:</span>
+                 <a href="#" class="text-info me-2">Facebook</a>|
+                 <a href="#" class="text-info me-2">Twitter</a>|
+                 <a href="#" class="text-info">Instagram</a>
+             </p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+        crossorigin="anonymous"></script>
 
-    <script src="/city-events-guide/js/localization.js"></script>
-    <script src="/city-events-guide/js/eventData.js"></script>
-    <script src="/city-events-guide/js/filter.js"></script> 
-    <script>
-        document.addEventListener('DOMContentLoaded', initializeLanguage);
-    </script>
+    <script src="/city-events-guide/js/localization.js"></script>
+    <script src="/city-events-guide/js/eventData.js"></script>
+    <script src="/city-events-guide/js/filter.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+    </script>
 
-    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="eventModalLabel"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="eventModalBody"></div>
-        </div>
-    </div>
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="eventModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="eventModalBody"></div>
+        </div>
+    </div>
 </div>
 
 </body>
