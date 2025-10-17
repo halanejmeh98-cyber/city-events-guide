@@ -98,21 +98,15 @@ const translations = {
         "venue_map_title": "Venue Map (Placeholder)",
         "cta_secondary_title": "Ready to find your next great event?",
         "cta_secondary_subtitle": "Browse through hundreds of exciting opportunities happening this month!",
-        
         "event_not_found": "Event not found.",
-        
         "event1_title_about_text1": "The City Summer Fest is the city's premier annual music event, celebrating local talent and attracting thousands of visitors. It features multiple stages, food trucks, and art installations. Don't miss the chance to experience the best music scene the city has to offer!",
         "event1_title_about_text2": "Tickets are selling fast. Book your spot now for the three-day pass!",
-        
         "upcoming_event_1_title_about_text1": "The Global Food Fair brings together over 50 international vendors offering authentic dishes and unique culinary experiences. It's a perfect day out for food lovers.",
         "upcoming_event_1_title_about_text2": "Admission is free, but come hungry! Enjoy cooking demonstrations and live cultural music.",
-        
         "upcoming_event_3_title_about_text1": "This annual exhibition showcases contemporary works from emerging local and international artists. Explore sculptures, paintings, and digital art in a stunning museum setting.",
         "upcoming_event_3_title_about_text2": "Limited edition prints are available for purchase. Join the opening reception on the first day!",
-        
         "upcoming_event_2_title_about_text1": "Participate in the city's biggest annual run! Choose between the full marathon, half marathon, or the fun 5K. All proceeds go to local children's charities.",
         "upcoming_event_2_title_about_text2": "Register early to secure your spot and receive a commemorative t-shirt and medal.",
-        
         "event5_title_about_text1": "A perfect day for the whole family! Enjoy face painting, bouncy castles, local food vendors, and performances by community groups. All activities are free.",
         "event5_title_about_text2": "Join us in the City Park Pavilion for a day of smiles and community spirit. Event runs from 10 AM to 4 PM.",
     },
@@ -215,55 +209,28 @@ const translations = {
         "venue_map_title": "خريطة المكان (عنصر نائب)",
         "cta_secondary_title": "هل أنت مستعد للعثور على فعاليتك الرائعة التالية؟",
         "cta_secondary_subtitle": "تصفح المئات من الفرص المثيرة التي تحدث هذا الشهر!",
-
         "event_not_found": "لم يتم العثور على الفعالية.",
-        
         "event1_title_about_text1": "مهرجان الصيف الموسيقي هو الحدث الموسيقي السنوي الأول في المدينة، يحتفل بالمواهب المحلية ويجذب الآلاف من الزوار. يضم مسارح متعددة، وشاحنات طعام، ومنشآت فنية. لا تفوت فرصة تجربة أفضل ما يقدمه المشهد الموسيقي في المدينة!",
         "event1_title_about_text2": "التذاكر تُباع بسرعة. احجز مكانك الآن للتذكرة لمدة ثلاثة أيام!",
-        
         "upcoming_event_1_title_about_text1": "يجمع معرض الغذاء العالمي أكثر من 50 بائعاً دولياً يقدمون أطباقاً أصيلة وتجارب طعام فريدة. إنه يوم مثالي لعشاق الطعام.",
         "upcoming_event_1_title_about_text2": "الدخول مجاني، لكن تعال جائعاً! استمتع بعروض الطبخ والموسيقى الثقافية الحية.",
-        
         "upcoming_event_3_title_about_text1": "يعرض هذا المعرض السنوي أعمالاً فنية معاصرة لفنانين محليين وعالميين صاعدين. استكشف المنحوتات واللوحات والفن الرقمي في بيئة متحف مذهلة.",
         "upcoming_event_3_title_about_text2": "تتوفر مطبوعات محدودة للبيع. انضم إلى حفل الافتتاح في اليوم الأول!",
-        
         "upcoming_event_2_title_about_text1": "شارك في أكبر سباق سنوي في المدينة! اختر بين الماراثون الكامل، أو نصف الماراثون، أو سباق الـ 5 كيلومترات الممتع. تذهب جميع العائدات إلى الجمعيات الخيرية المحلية للأطفال.",
         "upcoming_event_2_title_about_text2": "سجّل مبكراً لتأمين مكانك والحصول على قميص وميدالية تذكارية.",
-        
         "event5_title_about_text1": "يوم مثالي لجميع أفراد العائلة! استمتع بالرسم على الوجه، والقلاع النطاطة، وبائعي الطعام المحليين، وعروض المجموعات المجتمعية. جميع الأنشطة مجانية.",
         "event5_title_about_text2": "انضم إلينا في جناح حديقة المدينة ليوم مليء بالابتسامات والروح المجتمعية. تستمر الفعالية من 10 صباحاً حتى 4 مساءً.",
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'en';
+let currentLang = localStorage.getItem('language') || 'en';
 
 function applyDirection(lang) {
     if (lang === 'ar') {
         document.body.style.direction = 'rtl';
-        document.body.style.textAlign = 'right';
     } else {
         document.body.style.direction = 'ltr';
-        document.body.style.textAlign = 'left';
     }
-}
-
-function localizeDates(lang) {
-    const eventDateRows = document.querySelectorAll('.event-date-row');
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-
-    eventDateRows.forEach(row => {
-        const isoDate = row.getAttribute('data-date-iso');
-        const displayElement = row.querySelector('.event-date-display');
-
-        if (isoDate && displayElement) {
-            try {
-                const date = new Date(isoDate);
-                displayElement.textContent = date.toLocaleDateString(lang, options);
-            } catch (e) {
-                console.error("Error formatting date:", e);
-            }
-        }
-    });
 }
 
 function translatePage(lang) {
@@ -272,7 +239,9 @@ function translatePage(lang) {
         if (translations[lang] && translations[lang][key]) {
             let content = translations[lang][key];
 
-            if (element.tagName === 'INPUT' && element.placeholder) {
+            if (element.hasAttribute('data-key-placeholder')) {
+                element.placeholder = content;
+            } else if (element.tagName === 'INPUT' && element.placeholder) {
                 element.placeholder = content;
             } else {
                 element.innerHTML = content;
@@ -281,42 +250,56 @@ function translatePage(lang) {
     });
 
     const titleElement = document.querySelector('title');
-    if (titleElement) {
-        const titleKey = titleElement.getAttribute('data-key');
-        if (titleKey && translations[lang][titleKey]) {
-            titleElement.textContent = translations[lang][titleKey];
-        } else if (document.URL.includes('index.html') && translations[lang]['index_page_html_title']) {
-            titleElement.textContent = translations[lang]['index_page_html_title'];
-        }
-    }
+    const pageUrl = document.URL;
+    const pageKey = (pageUrl.includes('events.html') && 'events_page_html_title') ||
+                   (pageUrl.includes('event.html') && 'details_page_html_title') ||
+                   (pageUrl.includes('about.html') && 'about_page_html_title') ||
+                   (pageUrl.includes('contact.html') && 'contact_page_html_title') ||
+                   'index_page_html_title';
 
-    const searchInput = document.getElementById('eventSearch');
-    if (searchInput && translations[lang]['search_placeholder']) {
-        searchInput.placeholder = translations[lang]['search_placeholder'];
+    if (titleElement && translations[lang][pageKey]) {
+        titleElement.textContent = translations[lang][pageKey];
     }
-
-    localizeDates(lang);
+    
     applyDirection(lang);
 }
 
+function handleDynamicContent(lang) {
+    if (document.getElementById('event-details-content') && typeof loadEvent === 'function') {
+        loadEvent();
+    } 
+    
+    else if (document.getElementById('events-container') && typeof loadAndFilterEvents === 'function') {
+        loadAndFilterEvents();
+    }
+    
+    else if (document.getElementById('trending-events-container') && typeof loadTrendingEvents === 'function') {
+        loadTrendingEvents();
+    }
+}
+
 function initializeLanguage() {
-    currentLang = localStorage.getItem('lang') || 'en';
+    currentLang = localStorage.getItem('language') || 'en';
+    
     translatePage(currentLang);
-    applyDirection(currentLang);
     
     const langSwitcher = document.getElementById('lang-switcher');
     if (langSwitcher && !langSwitcher.hasAttribute('data-listener-added')) {
         langSwitcher.addEventListener('click', (e) => {
             e.preventDefault();
             currentLang = (currentLang === 'en') ? 'ar' : 'en';
-            localStorage.setItem('lang', currentLang);
+            localStorage.setItem('language', currentLang);
+            
             translatePage(currentLang);
-            document.dispatchEvent(new Event('languageChanged'));
+            
+            document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: currentLang } }));
+            
+            handleDynamicContent(currentLang);
         });
         langSwitcher.setAttribute('data-listener-added', 'true');
     }
-
-    document.dispatchEvent(new Event('languageChanged'));
+    
+    handleDynamicContent(currentLang);
 }
 
 document.addEventListener('DOMContentLoaded', initializeLanguage);
